@@ -1,8 +1,8 @@
 from collections import Counter
 
 years = []
-
-with open('Chicago_Crimes.csv', 'r') as file:
+# After filtering the data set I have downloaded it from "https://data.cityofchicago.org/Public-Safety/Chicago-CrimesSE446/wp32-6m43/revisions/0/soql"
+with open('Chicago_Crimes.csv', 'r') as file: 
     next(file)  
     
     for line in file:
