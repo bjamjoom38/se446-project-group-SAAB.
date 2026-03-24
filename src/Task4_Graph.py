@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Load dataset
+# After filtering the data set I have downloaded it from "https://data.cityofchicago.org/Public-Safety/Chicago-CrimesSE446/wp32-6m43/revisions/0/soql"
 df = pd.read_csv('Chicago_Crimes.csv')
 
 # Parse dates (FAST version)
