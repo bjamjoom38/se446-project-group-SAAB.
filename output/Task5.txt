@@ -1,0 +1,9 @@
+Research Question: What percentage of crimes result in an arrest?
+Total Crimes: 8517257
+Crimes with Arrest: 2140286
+Percentage of Crimes Resulting in Arrest: 25.13%
+==============================================================================================================================================================================================================================
+Mission: The Police Chief needs to assess the efficiency of patrols. How often are criminals actually caught?
+the percentage of crimes resulting in an arrest was 25.13%. The results show that there were 2,140,286 cases where an arrest was made and 6,376,971 cases where no arrest occurred.
+This shows that criminals are caught in about one out of every four reported crimes. While this shows that law enforcement is able to successfully apprehend suspects in some cases, 
+the majority of crimes (around 75%) do not result in an arrest. 
