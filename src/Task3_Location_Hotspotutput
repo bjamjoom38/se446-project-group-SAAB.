@@ -1,0 +1,62 @@
+import sys
+
+LOCATION_IDX = 7  # Location Description column
+
+def mapper():
+    for line in sys.stdin:
+        line = line.strip()
+        if not line:
+            continue
+
+        parts = line.split(',')
+
+        if len(parts) <= LOCATION_IDX:
+            continue
+
+        # Skip header
+        if parts[LOCATION_IDX] == "Location Description":
+            continue
+
+        location = parts[LOCATION_IDX].strip()
+        if location:
+            print(f"{location}\t1")
+
+
+def reducer():
+    current_location = None
+    current_count = 0
+
+    for line in sys.stdin:
+        line = line.strip()
+        if not line:
+            continue
+
+        try:
+            location, count = line.split("\t")
+            count = int(count)
+        except ValueError:
+            continue
+
+        if current_location == location:
+            current_count += count
+        else:
+            if current_location:
+                print(f"{current_location}\t{current_count}")
+            current_location = location
+            current_count = count
+
+    # Output last key
+    if current_location:
+        print(f"{current_location}\t{current_count}")
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        sys.exit("Usage: Task3_Location.py [map|reduce]")
+
+    if sys.argv[1] == "map":
+        mapper()
+    elif sys.argv[1] == "reduce":
+        reducer()
+    else:
+        sys.exit("Invalid argument. Use 'map' or 'reduce'.")
