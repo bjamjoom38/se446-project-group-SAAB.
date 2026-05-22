@@ -12,7 +12,13 @@ with open('Chicago_Crimes.csv', 'r', encoding='utf-8') as file:
     print("Arrest column index:", arrest_index)
 
     # MAP PHASE: process each row and emit key-value pairs
+    skipped_rows = 0
+
     for row in reader:
+        if len(row) <= arrest_index:
+            skipped_rows += 1
+            continue
+
         # Extract arrest status from the row
         arrest_status = row[arrest_index].strip().lower() 
 
@@ -28,3 +34,6 @@ print("----------------------")
 for key in results:
     print(f"{key} | {results[key]}")
     print("=======================")
+
+if skipped_rows:
+    print(f"Skipped malformed rows: {skipped_rows}")
