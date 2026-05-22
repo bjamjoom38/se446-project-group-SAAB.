@@ -1,37 +1,13 @@
-import csv
-from collections import defaultdict
+from task5_arrest_utils import count_arrest_status
 
-results = defaultdict(int)
-
-with open('Chicago_Crimes.csv', 'r', encoding='utf-8') as file:
-    reader = csv.reader(file)
-    header = next(reader)
-
-    # Find the index of the "Arrest" which is index 6
-    arrest_index = header.index('Arrest')
-    print("Arrest column index:", arrest_index)
-
-    # MAP PHASE: process each row and emit key-value pairs
-    skipped_rows = 0
-
-    for row in reader:
-        if len(row) <= arrest_index:
-            skipped_rows += 1
-            continue
-
-        # Extract arrest status from the row
-        arrest_status = row[arrest_index].strip().lower() 
-
-        if arrest_status == 'true':
-            results['True'] += 1   # counts arrests
-        elif arrest_status == 'false':
-            results['False'] += 1  # counts non-arrests
+results, skipped_rows, arrest_index = count_arrest_status("Chicago_Crimes.csv")
+print("Arrest column index:", arrest_index)
 
 # Output final results
 print("Arrest Status | Count")
 print("----------------------")
 
-for key in results:
+for key in ("True", "False"):
     print(f"{key} | {results[key]}")
     print("=======================")
 
