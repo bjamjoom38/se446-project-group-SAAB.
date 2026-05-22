@@ -34,6 +34,7 @@ def main():
             featuresCol="features",
             numTrees=100,
             maxDepth=5,
+            maxBins=64,
             seed=42,
         )
         model = feature_pipeline(rf).fit(train_df)
