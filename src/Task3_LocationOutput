@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+import sys
+
+LOCATION_IDX = 7
+
+for line in sys.stdin:
+    line = line.strip()
+
+    # Skip empty lines
+    if not line:
+        continue
+
+    parts = line.split(',')
+
+    if len(parts) <= LOCATION_IDX:
+        continue
+
+    # Show location type
+    location = parts[LOCATION_IDX].strip().upper()
+
+    # Skips null
+    if location:
+        print(f"{location}\t1")
